@@ -26,7 +26,7 @@ BlockInput, Send ; keeps user error from modifying input during a send event (do
 Return
 
 
-F2::
+F3::
 	BlockInput, MouseMove
 	Sleep, 50
 	; MouseMove, 2145, 493
@@ -35,10 +35,12 @@ F2::
 	Gosub, CopySelected
 
 	
-	; SendInput, {VKA2 down}{VK43 down}{VK43 up}{VKA2 up}{VKA4 down}{VK09 down}{VK09 up}{VKA4 up}
-	IfWinNotActive, AmazonVendorOrders_Report_Vs2019-10-14-0711 - Google Sheets - Google Chrome ahk_class Chrome_WidgetWin_1, , WinActivate, AmazonVendorOrders_Report_Vs2019-10-14-0711 - Google Sheets - Google Chrome ahk_class Chrome_WidgetWin_1
-	WinWaitActive, AmazonVendorOrders_Report_Vs2019-10-14-0711 - Google Sheets - Google Chrome ahk_class Chrome_WidgetWin_1
-	; SendInput, {VKA2 down}{VK46 down}{VK46 up}{VK56 down}{VK56 up}{VKA2 up}
+	;; SendInput, {VKA2 down}{VK43 down}{VK43 up}{VKA2 up}{VKA4 down}{VK09 down}{VK09 up}{VKA4 up}
+	; IfWinNotActive, AmazonVendorOrders_Report_Vs2019-10-14-0711 - Google Sheets - Google Chrome ahk_class Chrome_WidgetWin_1, , WinActivate, AmazonVendorOrders_Report_Vs2019-10-14-0711 - Google Sheets - Google Chrome ahk_class Chrome_WidgetWin_1
+	; WinWaitActive, AmazonVendorOrders_Report_Vs2019-10-14-0711 - Google Sheets - Google Chrome ahk_class Chrome_WidgetWin_1
+	;; SendInput, {VKA2 down}{VK46 down}{VK46 up}{VK56 down}{VK56 up}{VKA2 up}
+	Gosub, AltTab
+	
 	Gosub, FindClipboard
 	BlockInput, MouseMoveOff
 Return
@@ -124,6 +126,14 @@ FindClipboard:
 	Sleep, 10
 Return
 
+AltTab:
+	Send, {Alt DOWN}
+	Sleep, 10
+	Send, {Tab DOWN}
+	Sleep, 10
+	Send, {Tab UP}
+	Send, {Alt UP}
+Return
 
 ; ##########################################################
 ; SIMPLE FUNCTION ALLOWING YOU TO SET THE SLEEP INTERVAL 
