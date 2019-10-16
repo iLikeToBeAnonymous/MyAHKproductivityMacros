@@ -6,19 +6,19 @@
 
 
 
-  - Make sure your local version matches the master branch before making a new branch.
+- Make sure your local version matches the master branch before making a new branch.
 
   ```gitattributes
   git checkout master
   git fetch origin
   git reset --hard origin/master
   ```
-  - Now make a new (local) branch. You don't have to create a branch ahead of time on Github.
+- Now make a new (local) branch. You don't have to create a branch ahead of time on Github.
 
   ```gitattributes
   git checkout -b new-feature
   ```
-  - Once you've made changes and want to push them to the branch on Github, you must first prep for the push.
+- Once you've made changes and want to push them to the branch on Github, you must first prep for the push.
 
   ```gitattributes
   git status
@@ -32,9 +32,8 @@
       <dd>"Enter"</dd>
       <dd>"Ctrl+X" to exit the shell text editor and continue on your merry way</dd>
   </dl>
-  -   
 
-  - Once your changes have been committed, push those changes to a branch on Github.
+- Once your changes have been committed, push those changes to a branch on Github.
 
   ```gitattributes
   git push -u origin new-feature
