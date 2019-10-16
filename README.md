@@ -25,6 +25,7 @@
   git add <some-file>
   git commit
   ```
+
   <li>Once your changes have been committed, push those changes to a branch on Github</li>
 
   ```gitattributes
