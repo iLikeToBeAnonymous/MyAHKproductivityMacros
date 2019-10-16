@@ -18,7 +18,7 @@ BlockInput, Send ; keeps user error from modifying input during a send event (do
 
 
 ; Shift + Escape == Emergency stop (reloads the app)
-+Escape:: ; 
++Escape:: ;
 	Reload
 	Sleep 1000 ; If successful, the reload will close this instance during the Sleep, so the line below will never be reached.
 	MsgBox, 4,, The script could not be reloaded. Would you like to open it for editing?
@@ -32,15 +32,10 @@ F3::
 	; MouseMove, 2145, 493
 	Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
 	Sleep, 700
+	
 	Gosub, CopySelected
-
-	
-	;; SendInput, {VKA2 down}{VK43 down}{VK43 up}{VKA2 up}{VKA4 down}{VK09 down}{VK09 up}{VKA4 up}
-	; IfWinNotActive, AmazonVendorOrders_Report_Vs2019-10-14-0711 - Google Sheets - Google Chrome ahk_class Chrome_WidgetWin_1, , WinActivate, AmazonVendorOrders_Report_Vs2019-10-14-0711 - Google Sheets - Google Chrome ahk_class Chrome_WidgetWin_1
-	; WinWaitActive, AmazonVendorOrders_Report_Vs2019-10-14-0711 - Google Sheets - Google Chrome ahk_class Chrome_WidgetWin_1
-	;; SendInput, {VKA2 down}{VK46 down}{VK46 up}{VK56 down}{VK56 up}{VKA2 up}
 	Gosub, AltTab
-	
+
 	Gosub, FindClipboard
 	BlockInput, MouseMoveOff
 Return
@@ -136,7 +131,7 @@ AltTab:
 Return
 
 ; ##########################################################
-; SIMPLE FUNCTION ALLOWING YOU TO SET THE SLEEP INTERVAL 
+; SIMPLE FUNCTION ALLOWING YOU TO SET THE SLEEP INTERVAL
 ; AFTER EACH TAB ENTRY INSTEAD OF TYPING IT OUT EACH TIME
 ; ##########################################################
 TabSendSleep:
