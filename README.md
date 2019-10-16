@@ -1,12 +1,14 @@
 # MyAHKproductivityMacros
 
 [Great Github workflow example](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
+
 [Good github quick reference](https://rogerdudler.github.io/git-guide/)
+
 [Using syntax highlighting in markdown syntax](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)  
 
 
 
-- Make sure your local version matches the master branch before making a new branch.
+- Make sure your local version matches the master branch before making a new branch. If you're not already on the main branch, it'll switch to the main when you do this.
 
   ```gitattributes
   git checkout master
