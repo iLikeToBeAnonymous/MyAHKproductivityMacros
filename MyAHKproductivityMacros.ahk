@@ -28,16 +28,20 @@ Return
 
 F3::
 	BlockInput, MouseMove
-	Sleep, 50
+	Sleep, 10
 	; MouseMove, 2145, 493
 	; Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
 	Gosub, TripleClick
-	Sleep, 700
+	Sleep, 20
 
 	Gosub, CopySelected
-	Gosub, AltTab
 
-	Gosub, FindClipboard
+  ; Below code only now works if the target window for "find" is Chrome
+	WinActivateBottom, - Google Chrome
+	Sleep, 200
+
+
+	Gosub, FindClip
 	BlockInput, MouseMoveOff
 Return
 
@@ -102,7 +106,7 @@ CopySelected:
 	Gosub, stuckKeyCheck
 Return
 
-FindClipboard:
+FindClip:
 	Send, {Ctrl DOWN}
 	Sleep, 10
 	Send, {f DOWN}
@@ -120,24 +124,27 @@ FindClipboard:
 	Sleep, 10
 	Send, {Ctrl UP}
 	Sleep, 10
-Return
+Return ;
 
-AltTab:
+myAltTab:
 	SLEEP, 10
 	Send, {Alt DOWN}
-	Sleep, 10
+	Sleep, 5
 	Send, {Tab DOWN}
-	Sleep, 10
+	Sleep, 200
 	Send, {Tab UP}
+	Sleep, 10
 	Send, {Alt UP}
+	Sleep, 10
 Return
 
 TripleClick:
 	Loop, 3
 	{
 		Send, {LButton down}
-		sleep, 5
+		Sleep, 5
 		Send, {LButton up}
+		Sleep, 10
 	}
 Return
 
