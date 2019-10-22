@@ -30,9 +30,10 @@ F3::
 	BlockInput, MouseMove
 	Sleep, 50
 	; MouseMove, 2145, 493
-	Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
+	; Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
+	Gosub, TripleClick
 	Sleep, 700
-	
+
 	Gosub, CopySelected
 	Gosub, AltTab
 
@@ -122,12 +123,20 @@ FindClipboard:
 Return
 
 AltTab:
+	SLEEP, 10
 	Send, {Alt DOWN}
 	Sleep, 10
 	Send, {Tab DOWN}
 	Sleep, 10
 	Send, {Tab UP}
 	Send, {Alt UP}
+Return
+
+TripleClick:
+	Loop, 3
+		Send, {LButton down}
+		sleep, 5
+		Send, {LButton up}
 Return
 
 ; ##########################################################
@@ -147,7 +156,8 @@ Return
 OnClipboardChange:
 		; SplashTextFlag := 1
 		; SplashTextOn,300,45,HUD, %extraClipboard%`n%clipboard%
-		SplashTextOn,300,77,HUD,"Clipboard: "%clipboard%`n"Current SKU: "%orderedSKU%`n"QTY: "%qtyOrdered%`n"Remaining: "%remainingRows%
+		; SplashTextOn,300,77,HUD,"Clipboard: "%clipboard%`n"Current SKU: "%orderedSKU%`n"QTY: "%qtyOrdered%`n"Remaining: "%remainingRows%
+		SplashTextOn,300,77,HUD,"Clipboard: "%clipboard%
 		WinMove, HUD,, 1475, 100
 		; WinSet, Region, 50-0 W400 H133 R40-40, HUD
 return
