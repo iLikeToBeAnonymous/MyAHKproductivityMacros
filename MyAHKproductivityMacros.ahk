@@ -134,9 +134,11 @@ Return
 
 TripleClick:
 	Loop, 3
+	{
 		Send, {LButton down}
 		sleep, 5
 		Send, {LButton up}
+	}
 Return
 
 ; ##########################################################
