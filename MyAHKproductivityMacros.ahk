@@ -28,15 +28,20 @@ Return
 
 F3::
 	BlockInput, MouseMove
-	Sleep, 50
+	Sleep, 10
 	; MouseMove, 2145, 493
-	Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
-	Sleep, 700
-	
-	Gosub, CopySelected
-	Gosub, AltTab
+	; Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
+	Gosub, TripleClick
+	Sleep, 20
 
-	Gosub, FindClipboard
+	Gosub, CopySelected
+
+  ; Below code only now works if the target window for "find" is Chrome
+	WinActivateBottom, - Google Chrome
+	Sleep, 200
+
+
+	Gosub, FindClip
 	BlockInput, MouseMoveOff
 Return
 
@@ -101,7 +106,7 @@ CopySelected:
 	Gosub, stuckKeyCheck
 Return
 
-FindClipboard:
+FindClip:
 	Send, {Ctrl DOWN}
 	Sleep, 10
 	Send, {f DOWN}
@@ -119,15 +124,28 @@ FindClipboard:
 	Sleep, 10
 	Send, {Ctrl UP}
 	Sleep, 10
+Return ;
+
+myAltTab:
+	SLEEP, 10
+	Send, {Alt DOWN}
+	Sleep, 5
+	Send, {Tab DOWN}
+	Sleep, 200
+	Send, {Tab UP}
+	Sleep, 10
+	Send, {Alt UP}
+	Sleep, 10
 Return
 
-AltTab:
-	Send, {Alt DOWN}
-	Sleep, 10
-	Send, {Tab DOWN}
-	Sleep, 10
-	Send, {Tab UP}
-	Send, {Alt UP}
+TripleClick:
+	Loop, 3
+	{
+		Send, {LButton down}
+		Sleep, 5
+		Send, {LButton up}
+		Sleep, 10
+	}
 Return
 
 ; ##########################################################
@@ -147,7 +165,8 @@ Return
 OnClipboardChange:
 		; SplashTextFlag := 1
 		; SplashTextOn,300,45,HUD, %extraClipboard%`n%clipboard%
-		SplashTextOn,300,77,HUD,"Clipboard: "%clipboard%`n"Current SKU: "%orderedSKU%`n"QTY: "%qtyOrdered%`n"Remaining: "%remainingRows%
+		; SplashTextOn,300,77,HUD,"Clipboard: "%clipboard%`n"Current SKU: "%orderedSKU%`n"QTY: "%qtyOrdered%`n"Remaining: "%remainingRows%
+		SplashTextOn,300,77,HUD,"Clipboard: "%clipboard%
 		WinMove, HUD,, 1475, 100
 		; WinSet, Region, 50-0 W400 H133 R40-40, HUD
 return
