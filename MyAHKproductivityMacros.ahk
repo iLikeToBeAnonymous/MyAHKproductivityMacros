@@ -17,6 +17,7 @@ SetBatchLines 1 ; has no effect on SendMode Input
 BlockInput, Send ; keeps user error from modifying input during a send event (doesn't really get a chance to act when SendMode is "Input")
 
 
+
 ; Shift + Escape == Emergency stop (reloads the app)
 +Escape:: ;
 	Reload
@@ -25,13 +26,46 @@ BlockInput, Send ; keeps user error from modifying input during a send event (do
 	IfMsgBox, Yes, Edit
 Return
 
+; Delete Trello Message (if not the user's message)
+;F1::
+;
+;	BlockInput, MouseMove
+;	Sleep, 10
+;	Send, {LButton down}
+;	Sleep, 5
+;	Send, {LButton up}
+;	Sleep, 10
+;	Send, {Down 6}
+;	Sleep, 100
+;	Send, {NumpadEnter}
+;	Sleep, 200
+;	Send, {NumpadEnter}
+;	BlockInput, MouseMoveOff
+;Return
+
+; Delete Trello Message (if user's message)
+;F2::
+;	BlockInput, MouseMove
+;	Sleep, 10
+;	Send, {LButton down}
+;	Sleep, 5
+;	Send, {LButton up}
+;	Sleep, 10
+;	Send, {Down 7}
+;	Sleep, 100
+;	Send, {NumpadEnter}
+;	Sleep, 200
+;	Send, {NumpadEnter}
+;	BlockInput, MouseMoveOff
+;Return
 
 F3::
 	BlockInput, MouseMove
 	Sleep, 10
 	; MouseMove, 2145, 493
 	; Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
-	Gosub, TripleClick
+	; Gosub, TripleClick
+	MultiClick(3)
 	Sleep, 20
 
 	Gosub, CopySelected
@@ -147,6 +181,20 @@ TripleClick:
 		Sleep, 10
 	}
 Return
+
+
+MultiClick(clickCount)
+{
+	Loop %clickCount%
+	{
+		Send, {LButton down}
+		Sleep, 5
+		Send, {LButton up}
+		Sleep, 20
+	}
+}
+
+
 
 ; ##########################################################
 ; SIMPLE FUNCTION ALLOWING YOU TO SET THE SLEEP INTERVAL
