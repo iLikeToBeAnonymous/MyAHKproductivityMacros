@@ -7,6 +7,11 @@
 [Using syntax highlighting in markdown syntax](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)  
 
 
+- If you need to create a local copy of a project from Github, all you need to do is open bash in the desired target folder, then type:
+
+  ```gitattributes
+  git clone the_url_of_the_repository
+  ```
 
 - Make sure your local version matches the master branch before making a new branch. If you're not already on the main branch, it'll switch to the main when you do this.
 
