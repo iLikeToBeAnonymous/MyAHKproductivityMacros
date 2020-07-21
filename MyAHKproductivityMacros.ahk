@@ -18,6 +18,7 @@ BlockInput, Send ; keeps user error from modifying input during a send event (do
 
 numOfClicks:=3
 
+InputBox, numOfClicks, , Type in number of clicks.`nDEFAULT SHOULD BE 3`nIf you need to re-enter this`, you must reload the script.
 ; Shift + Escape == Emergency stop (reloads the app)
 +Escape:: ;
 	Reload
@@ -25,6 +26,7 @@ numOfClicks:=3
 	MsgBox, 4,, The script could not be reloaded. Would you like to open it for editing?
 	IfMsgBox, Yes, Edit
 Return
+
 
 ; Delete Trello Message (if not the user's message)
 ;F1::
