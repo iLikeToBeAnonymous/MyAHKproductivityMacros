@@ -16,7 +16,7 @@ SetMouseDelay 1
 SetBatchLines 1 ; has no effect on SendMode Input
 BlockInput, Send ; keeps user error from modifying input during a send event (doesn't really get a chance to act when SendMode is "Input")
 
-
+numOfClicks:=3
 
 ; Shift + Escape == Emergency stop (reloads the app)
 +Escape:: ;
@@ -65,7 +65,7 @@ F3::
 	; MouseMove, 2145, 493
 	; Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
 	; Gosub, TripleClick
-	MultiClick(3)
+	MultiClick(numOfClicks)
 	Sleep, 20
 
 	Gosub, CopySelected
