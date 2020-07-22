@@ -18,7 +18,9 @@ BlockInput, Send ; keeps user error from modifying input during a send event (do
 
 numOfClicks:=3
 
-InputBox, numOfClicks, , Type in number of clicks.`nDEFAULT SHOULD BE 3`nIf you need to re-enter this`, you must reload the script.
+InputBox, numOfClicks, , Type in number of clicks.`nDEFAULT SHOULD BE 3`nIf you need to re-enter this`, you must reload the script.,,,,,,,,3
+If ErrorLevel
+	numOfClicks=3
 ; Shift + Escape == Emergency stop (reloads the app)
 +Escape:: ;
 	Reload
