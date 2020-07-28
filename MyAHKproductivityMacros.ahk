@@ -17,7 +17,7 @@ SetBatchLines 1 ; has no effect on SendMode Input
 BlockInput, Send ; keeps user error from modifying input during a send event (doesn't really get a chance to act when SendMode is "Input")
 
 numOfClicks:=3
-
+; Replace the below InputBox with a Gui using an "UpDown" control (https://www.autohotkey.com/docs/commands/GuiControls.htm#UpDown)
 InputBox, numOfClicks, , Type in number of clicks.`nDEFAULT SHOULD BE 3`nIf you need to re-enter this`, you must reload the script.,,,,,,,,3
 If ErrorLevel
 	numOfClicks=3
