@@ -65,18 +65,17 @@ Return
 
 F3::
 	BlockInput, MouseMove
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	; MouseMove, 2145, 493
 	; Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
-	; Gosub, TripleClick
 	MultiClick(numOfClicks)
-	Sleep, 20
+	DllCall("Sleep","UInt",50) ; Sleep, 20
 
 	Gosub, CopySelected
 
   ; Below code only now works if the target window for "find" is Chrome
 	WinActivateBottom, - Google Chrome
-	Sleep, 200
+	DllCall("Sleep","UInt",200) ; Sleep, 200
 
 
 	Gosub, FindClip
@@ -127,11 +126,11 @@ Return
 ; ##########################################################################################
 CopySelected:
 	Send, {Ctrl DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {c DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {c UP}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {Ctrl UP}
 	ClipWait, 3, 1
 	if ErrorLevel
@@ -146,44 +145,34 @@ Return
 
 FindClip:
 	Send, {Ctrl DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {f DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {f UP}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {Ctrl UP}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 
 	Send, {Ctrl DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {v DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {v UP}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {Ctrl UP}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 Return ;
 
 myAltTab:
-	SLEEP, 10
+	DllCall("Sleep","UInt",10) ; SLEEP, 10
 	Send, {Alt DOWN}
-	Sleep, 5
+	DllCall("Sleep","UInt",5) ; Sleep, 5
 	Send, {Tab DOWN}
-	Sleep, 200
+	DllCall("Sleep","UInt",100) ; Sleep, 200
 	Send, {Tab UP}
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 	Send, {Alt UP}
-	Sleep, 10
-Return
-
-TripleClick:
-	Loop, 3
-	{
-		Send, {LButton down}
-		Sleep, 5
-		Send, {LButton up}
-		Sleep, 10
-	}
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 Return
 
 
@@ -192,9 +181,9 @@ MultiClick(clickCount)
 	Loop %clickCount%
 	{
 		Send, {LButton down}
-		Sleep, 5
+		DllCall("Sleep","UInt",10) ; Sleep, 5
 		Send, {LButton up}
-		Sleep, 20
+		DllCall("Sleep","UInt",10) ; Sleep, 20
 	}
 }
 
@@ -204,12 +193,11 @@ MultiClick(clickCount)
 ; SIMPLE FUNCTION ALLOWING YOU TO SET THE SLEEP INTERVAL
 ; AFTER EACH TAB ENTRY INSTEAD OF TYPING IT OUT EACH TIME
 ; ##########################################################
-TabSendSleep:
+TabSendSleep: ; Gosub is faster than a function call.
 	Send, {Tab}
-	; Sleep, 100
-	; Sleep, 50
-	Sleep, 10
+	DllCall("Sleep","UInt",10) ; Sleep, 10
 Return
+
 
 ; #######################################################################################
 ; SHOWS HUD IN TOP RIGHT CORNER OF SCREEN SO YOU CAN SEE WHAT'S LOADED IN THE VARIABLES

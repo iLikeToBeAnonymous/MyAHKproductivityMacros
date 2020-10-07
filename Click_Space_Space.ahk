@@ -26,7 +26,7 @@ If ErrorLevel
 ; Shift + Escape == Emergency stop (reloads the app)
 +Escape:: ;
 	Reload
-	Sleep 1000 ; If successful, the reload will close this instance during the Sleep, so the line below will never be reached.
+	Sleep 1000 ; If successful, the reload will close this instance during the DllCall("Sleep","UInt", so the line below will never be reached.
 	MsgBox, 4,, The script could not be reloaded. Would you like to open it for editing?
 	IfMsgBox, Yes, Edit
 Return
@@ -35,15 +35,15 @@ Return
 
 F3::
 	BlockInput, MouseMove
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	; MouseMove, 2145, 493
 	; Send, {LButton down}{LButton up}{LButton down}{LButton up}{LButton down}{LButton up}
 	; Gosub, TripleClick
 	Send, {LButton down}
-	Sleep, 5
+	DllCall("Sleep","UInt", 5)
 	Send, {LButton up}
-	Sleep, 20
-	Sleep, 1000
+	DllCall("Sleep","UInt", 20)
+	DllCall("Sleep","UInt", 1000)
 
 	spaceSendSleep(numOfSpaces,waitSpace)
 
@@ -95,11 +95,11 @@ Return
 ; ##########################################################################################
 CopySelected:
 	Send, {Ctrl DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {c DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {c UP}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {Ctrl UP}
 	ClipWait, 3, 1
 	if ErrorLevel
@@ -114,43 +114,43 @@ Return
 
 FindClip:
 	Send, {Ctrl DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {f DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {f UP}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {Ctrl UP}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 
 	Send, {Ctrl DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {v DOWN}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {v UP}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {Ctrl UP}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 Return ;
 
 myAltTab:
-	SLEEP, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {Alt DOWN}
-	Sleep, 5
+	DllCall("Sleep","UInt", 5)
 	Send, {Tab DOWN}
-	Sleep, 200
+	DllCall("Sleep","UInt", 200)
 	Send, {Tab UP}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 	Send, {Alt UP}
-	Sleep, 10
+	DllCall("Sleep","UInt", 10)
 Return
 
 TripleClick:
 	Loop, 3
 	{
 		Send, {LButton down}
-		Sleep, 5
+		DllCall("Sleep","UInt", 5)
 		Send, {LButton up}
-		Sleep, 10
+		DllCall("Sleep","UInt", 10)
 	}
 Return
 
@@ -160,9 +160,9 @@ MultiClick(clickCount)
 	Loop %clickCount%
 	{
 		Send, {LButton down}
-		Sleep, 5
+		DllCall("Sleep","UInt", 5)
 		Send, {LButton up}
-		Sleep, 20
+		DllCall("Sleep","UInt", 20)
 	}
 }
 
@@ -174,9 +174,9 @@ MultiClick(clickCount)
 ; ##########################################################
 TabSendSleep:
 	Send, {Tab}
-	; Sleep, 100
-	; Sleep, 50
-	Sleep, 10
+	; DllCall("Sleep","UInt", 100
+	; DllCall("Sleep","UInt", 50
+	DllCall("Sleep","UInt", 10)
 Return
 
 spaceSendSleep(spacebarCount,waitTime)
@@ -184,9 +184,9 @@ spaceSendSleep(spacebarCount,waitTime)
 	Loop %spacebarCount%
 	{
 		Send, {Space down}
-		Sleep, 5
+		DllCall("Sleep","UInt", 5)
 		Send, {Space up}
-		Sleep, %waitTime%
+		DllCall("Sleep","UInt", %waitTime%)
 	}
 }
 
