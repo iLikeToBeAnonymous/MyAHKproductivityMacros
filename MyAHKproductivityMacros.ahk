@@ -74,10 +74,11 @@ F3::
 	Gosub, CopySelected
 
   ; Below code only now works if the target window for "find" is Chrome
-	WinActivateBottom, - Google Chrome
-	DllCall("Sleep","UInt",200) ; Sleep, 200
+	if WinActive("Google Chrome") 
+		WinActivateBottom, - Google Chrome
+	else WinActivate, - Google Chrome 
 
-
+	DllCall("Sleep","UInt",200)
 	Gosub, FindClip
 	BlockInput, MouseMoveOff
 Return
